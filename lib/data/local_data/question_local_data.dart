@@ -12,7 +12,7 @@ class QuestionLocalData {
     if (index < questionAns.length) {
       return questionAns[index].questions;
     }
-
+  
     return "Suroolor tugondu";
   }
 
