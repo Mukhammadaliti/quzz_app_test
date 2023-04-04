@@ -11,14 +11,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log("${_quizController.count.value} ====>");
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-        title: Text("Тапшырма 7"),
-      ),
-      body: Obx(
-        () => Column(
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          centerTitle: true,
+          title: Text("Тапшырма 7"),
+        ),
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
@@ -50,8 +50,8 @@ class HomePage extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                _quizController.suroonuOtkoz();
-                log("${_quizController.suroonuAlipkel()}");
+                _quizController.jooptuAlipkel();
+                log("${_quizController.jooptuAlipkel()}");
               },
               child: Container(
                 width: 400,

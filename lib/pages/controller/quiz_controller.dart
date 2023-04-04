@@ -31,14 +31,14 @@ class QuizController extends GetxController {
 
   String? suroonuAlipkel() {
     if (index < questionLocalData.questionAns.length) {
-      return questionLocalData.questionAns[index.value].questions;
+      return questionLocalData.questionAns[index.value].questions!;
     }
 
     return "Suroolor tugondu";
   }
 
   bool? jooptuAlipkel() {
-    return questionLocalData.questionAns[index.value].answers;
+    return questionLocalData.questionAns[index.value].answers!;
   }
 
   void suroonuOtkoz() {
