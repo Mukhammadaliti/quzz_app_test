@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class QuizController extends GetxController {
   RxList<Icon> icons = <Icon>[].obs;
+  Rx<int> count = 0.obs;
   Rx<int> index = 0.obs;
   void koldonuuchunJoobu(bool userdinJoobu) {
     if (userdinJoobu == jooptuAlipkel()) {
@@ -41,6 +42,6 @@ class QuizController extends GetxController {
   }
 
   void suroonuOtkoz() {
-    index.value++;
+    index.value = index.value++;
   }
 }
