@@ -1,18 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter_application_3/data/local_data/question_local_data.dart';
+import 'package:flutter_application_3/pages/controller/quiz_controller.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  List<Icon> icons = [];
-
+class HomePage extends StatelessWidget {
+  QuizController _quizController = Get.put(QuizController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           ),
           InkWell(
             onTap: () {
-              koldonuuchunJoobu(true);
+              _quizController.koldonuuchunJoobu(true);
               log('Tuura basilip atat');
             },
             child: Container(
@@ -53,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           ),
           InkWell(
             onTap: () {
-              koldonuuchunJoobu(false);
+              _quizController.koldonuuchunJoobu(false);
             },
             child: Container(
               width: 400,
@@ -67,34 +61,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Row(
-            children: icons,
+            children: _quizController.icons.value,
           )
         ],
       ),
     );
-  }
-
-  void koldonuuchunJoobu(bool userdinJoobu) {
-    if (userdinJoobu == questionLocalData.jooptuAlipkel()) {
-      icons.add(
-        const Icon(
-          Icons.check,
-          color: Colors.green,
-          size: 50,
-        ),
-      );
-    } else {
-      icons.add(
-        const Icon(
-          Icons.cancel,
-          color: Colors.red,
-          size: 50,
-        ),
-      );
-    }
-    questionLocalData.suroonuOtkoz();
-    questionLocalData.suroonuAlipkel();
-
-    setState(() {});
   }
 }
