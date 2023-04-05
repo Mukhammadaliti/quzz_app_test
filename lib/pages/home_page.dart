@@ -20,19 +20,19 @@ class HomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // _quizController.containerBer(),
-          // showAlert(context),
+          // _quizController.containerBer().value,
           _quizController.isFinished == true
               ? AlertDialog(
                   title: const Text("Suroolor buttu"),
                   actions: [
-                    TextButton(
+                    Obx(() => TextButton(
                         onPressed: () {
                           _quizController.isFinished.value = false;
+                          // showAlert(context);
                           _quizController.icons.value = [];
                           _quizController.restart();
                         },
-                        child: const Text("Kaira bashta"))
+                        child: const Text("Kaira bashta")))
                   ],
                 )
               : Obx(() => Text(
@@ -112,3 +112,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+HomePage homepege = HomePage();

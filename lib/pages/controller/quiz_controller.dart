@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/data/local_data/question_local_data.dart';
+import 'package:flutter_application_3/pages/home_page.dart';
 import 'package:get/get.dart';
 
 class QuizController extends GetxController {
@@ -35,9 +36,9 @@ class QuizController extends GetxController {
     if (index < questionLocalData.questionAns.length) {
       return questionLocalData.questionAns[index.value].questions!;
     }
-    // restart();
-    // icons.clear();
-    return "Suroolor tugondu";
+    restart();
+    icons.clear();
+    return "Suroo Butubuu";
   }
 
   bool? jooptuAlipkel() {
@@ -58,21 +59,23 @@ class QuizController extends GetxController {
 
   RxBool isFinished = false.obs;
 
-  Widget containerBer() {
+  Rx<dynamic> containerBer() {
     return Container(
       color: Colors.yellow,
       child: Text(
-        'Salam',
+        'Suroo Buttu',
         style: TextStyle(fontSize: 50),
       ),
-    );
+    ).obs;
   }
 
   // showAlert(BuildContext context) {
   //   // set up the button
   //   Widget okButton = TextButton(
   //     child: Text("OK"),
-  //     onPressed: () {},
+  //     onPressed: () {
+  //       restart();
+  //     },
   //   );
 
   //   // set up the AlertDialog
