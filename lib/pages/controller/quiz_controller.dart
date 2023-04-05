@@ -18,7 +18,7 @@ class QuizController extends GetxController {
     } else {
       icons.add(
         const Icon(
-          Icons.cancel,
+          Icons.close,
           color: Colors.red,
           size: 50,
         ),
@@ -26,22 +26,69 @@ class QuizController extends GetxController {
     }
 
     suroonuOtkoz();
-    suroonuAlipkel();
+    if (suroonuAlipkel() == "") {
+      isFinished.value = true;
+    }
   }
 
-  String? suroonuAlipkel() {
+  String suroonuAlipkel() {
     if (index < questionLocalData.questionAns.length) {
       return questionLocalData.questionAns[index.value].questions!;
     }
-
+    // restart();
+    // icons.clear();
     return "Suroolor tugondu";
   }
 
   bool? jooptuAlipkel() {
-    return questionLocalData.questionAns[index.value].answers!;
+    if (index.value < questionLocalData.questionAns.length) {
+      return questionLocalData.questionAns[index.value].answers!;
+    } else {
+      return false;
+    }
   }
 
   void suroonuOtkoz() {
-    index.value = index.value++;
+    index.value++;
   }
+
+  void restart() {
+    index.value = 0;
+  }
+
+  RxBool isFinished = false.obs;
+
+  Widget containerBer() {
+    return Container(
+      color: Colors.yellow,
+      child: Text(
+        'Salam',
+        style: TextStyle(fontSize: 50),
+      ),
+    );
+  }
+
+  // showAlert(BuildContext context) {
+  //   // set up the button
+  //   Widget okButton = TextButton(
+  //     child: Text("OK"),
+  //     onPressed: () {},
+  //   );
+
+  //   // set up the AlertDialog
+  //   AlertDialog alert = AlertDialog(
+  //     title: Text("Buttu!"),
+  //     actions: [
+  //       okButton,
+  //     ],
+  //   );
+
+  //   // show the dialog
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return alert;
+  //     },
+  //   );
+  // }
 }
